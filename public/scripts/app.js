@@ -34,19 +34,26 @@ sampleAlbums.push({
            });
 /* end of hard-coded data */
 
+var template;
+var $albumsList;
+// var allAlbums=[];
 
 
 
 $(document).ready(function() {
   console.log('app.js loaded!');
+
+  $albumsList = $('#albums');
+
+  var source = $('#album-template').html();
+  template = Handlebars.compile(source);
+
+  renderAlbum(sampleAlbums[0]);
+
 });
 
 
-
-
-
-// this function takes a single album and renders it to the page
-function renderAlbum(album) {
-  console.log('rendering album:', album);
-
+function renderAlbum(thisAlbum) {
+  var albumsHtml = template({album: thisAlbum});
+  $albumsList.prepend(albumsHtml);
 }
