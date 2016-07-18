@@ -29,7 +29,7 @@ This sprint we will:
 sample serialized form data:
 
 ```js
-name=Marble+House&textinput=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop
+name=Marble+House&artistName=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop
 ```
 
 1. Clear the form after getting the data.
