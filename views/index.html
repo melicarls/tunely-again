@@ -70,6 +70,14 @@
                   <!-- end of album internal row -->
 
                   <div class='panel-footer'>
+                    <h4>Songs</h4>
+                    <ul>
+                      {{#each album.songs}}
+                        <li>
+                          {{trackNumber}}. {{name}}
+                        </li>
+                      {{/each}}
+                    </ul>
                   </div>
 
                 </div>
