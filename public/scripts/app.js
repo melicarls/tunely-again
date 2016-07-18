@@ -29,6 +29,7 @@ $(document).ready(function() {
     var data = $(this).serialize();
     $('input').val("");
     $('textarea').val("");
+    $('#newModal').modal('toggle');
     $.ajax({
       method: 'POST',
       url: '/api/albums',

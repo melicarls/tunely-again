@@ -1,3 +1,11 @@
+input {
+  max-width: 100%;
+}
+
+fieldset {
+  padding: 10px;
+}
+
 .jumbotron {
   background-image: url(/images/background1.jpg);
   background-size: cover;
@@ -13,4 +21,3 @@
   vertical-align: baseline;
   margin-right: 12px;
 }
-
