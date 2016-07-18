@@ -4,16 +4,25 @@
 
 var db = require('../models');
 
-// GET /api/albums
 function index(req, res) {
-  // FILL ME IN !
   db.Album.find(function(err, foundAlbums) {
     res.json(foundAlbums);
   });
 }
 
 function create(req, res) {
-  // FILL ME IN !
+  var newAlbum = new db.Album({
+    name: req.body.name,
+    artistName: req.body.artistName,
+    releaseDate: req.body.releaseDate,
+    genres: req.body.genres.split(',')
+  });
+  newAlbum.save(function (err, savedAlbum) {
+    if (err) {
+      return console.log("There was an error: ", err);
+    }
+    res.json(savedAlbum);
+  });
 }
 
 function show(req, res) {
