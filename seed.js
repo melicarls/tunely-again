@@ -30,6 +30,42 @@ var albumsList =[
 }
 ];
 
+var sampleSongs = [
+  {
+    name: 'Swamped',
+    trackNumber: 1
+  },
+  {
+    name: "Heaven's a Lie",
+    trackNumber: 2
+  },
+  {
+    name: 'Daylight Dancer',
+    trackNumber: 3
+  },
+  {
+    name: 'Humane',
+    trackNumber: 4
+  },
+  {
+    name: 'Self Deception',
+    trackNumber: 5
+  },
+  {
+    name: 'Aeon',
+    trackNumber: 6
+  },
+  {
+    name: 'Tight Rope',
+    trackNumber: 7
+  }
+];
+
+albumsList.forEach(function(album) {
+  album.songs = sampleSongs;
+});
+
+
 db.Album.remove({}, function(err, albums){
 
   db.Album.create(albumsList, function(err, albums){
