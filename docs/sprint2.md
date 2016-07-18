@@ -29,7 +29,7 @@ This sprint we will:
 sample serialized form data:
 
 ```js
-name=Marble+House&textinput=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop
+name=Marble+House&artistName=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop
 ```
 
 1. Clear the form after getting the data.
@@ -52,7 +52,7 @@ POST  /api/albums
 
 curl:
 ```bash
- curl -X POST http://localhost:3000/api/albums --data "name=Marble+House&textinput=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop"
+ curl -X POST http://localhost:3000/api/albums --data "name=Marble+House&artistName=The+Knife&releaseDate=2006&genres=electronica%2C+synth+pop%2C+trip+hop"
 ```
 
 > Hint: If using postman to POST set the BODY type to x-www-form-urlencoded, then set key-value pairs.
