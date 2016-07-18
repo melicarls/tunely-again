@@ -9,8 +9,6 @@ var template;
 var $albumsList;
 var allAlbums=[];
 
-
-
 $(document).ready(function() {
   console.log('app.js loaded!');
 
@@ -24,6 +22,13 @@ $(document).ready(function() {
     url: '/api/albums',
     success: onSuccess,
     error: onError
+  });
+
+  $('form').on('submit', function(event) {
+    event.preventDefault();
+    console.log($(this).serialize());
+    $('input').val("");
+    $('textarea').val("");
   });
 
 });
