@@ -48,7 +48,9 @@ $(document).ready(function() {
   var source = $('#album-template').html();
   template = Handlebars.compile(source);
 
-  renderAlbum(sampleAlbums[0]);
+  sampleAlbums.forEach(function(album) {
+    renderAlbum(album);
+  });
 
 });
 
