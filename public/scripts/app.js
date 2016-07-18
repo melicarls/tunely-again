@@ -26,9 +26,16 @@ $(document).ready(function() {
 
   $('form').on('submit', function(event) {
     event.preventDefault();
-    console.log($(this).serialize());
+    var data = $(this).serialize();
     $('input').val("");
     $('textarea').val("");
+    $.ajax({
+      method: 'POST',
+      url: '/api/albums',
+      data: data,
+      success:postSuccess,
+      error: postError
+    });
   });
 
 });
@@ -47,4 +54,12 @@ function onSuccess(json) {
 
 function onError(err) {
   console.log("The albums couldn't be fetched: ", err);
+}
+
+function postSuccess(json) {
+  renderAlbum(json);
+}
+
+function postError(err) {
+  console.log("The album could not be added: ", err);
 }
