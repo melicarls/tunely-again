@@ -48,6 +48,13 @@ $(document).ready(function() {
   var source = $('#album-template').html();
   template = Handlebars.compile(source);
 
+  $.ajax({
+    method: 'GET',
+    url: '/api/albums',
+    success: onSuccess,
+    error: onError
+  });
+
   sampleAlbums.forEach(function(album) {
     renderAlbum(album);
   });
@@ -58,4 +65,14 @@ $(document).ready(function() {
 function renderAlbum(thisAlbum) {
   var albumsHtml = template({album: thisAlbum});
   $albumsList.prepend(albumsHtml);
+}
+
+function onSuccess(json) {
+  json.forEach(function(album) {
+    renderAlbum(album);
+  });
+}
+
+function onError(err) {
+  console.log("The albums couldn't be fetched: ", err);
 }
