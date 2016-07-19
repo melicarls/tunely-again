@@ -39,6 +39,7 @@ $(document).ready(function() {
     });
   });
 
+
 });
 
 
@@ -51,6 +52,7 @@ function onSuccess(json) {
   json.forEach(function(album) {
     renderAlbum(album);
   });
+  $('.add-song').on('click', handleNewSongClick);
 }
 
 function onError(err) {
@@ -63,4 +65,12 @@ function postSuccess(json) {
 
 function postError(err) {
   console.log("The album could not be added: ", err);
+}
+
+function handleNewSongClick() {
+  console.log('clicked!');
+  var currentAlbumId= $(this).closest('.album').data('album-id');
+  console.log('id',currentAlbumId);
+  $('#songModal').data('album-id', currentAlbumId);
+  $('#songModal').modal();
 }
