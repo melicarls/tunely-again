@@ -67,10 +67,39 @@ function postError(err) {
   console.log("The album could not be added: ", err);
 }
 
-function handleNewSongClick() {
+function handleNewSongClick(event) {
   console.log('clicked!');
   var currentAlbumId= $(this).closest('.album').data('album-id');
   console.log('id',currentAlbumId);
   $('#songModal').data('album-id', currentAlbumId);
   $('#songModal').modal();
+  $('#saveSong').on('click', handleNewSongSubmit);
+}
+
+function handleNewSongSubmit(e) {
+  console.log('submit button clicked');
+  e.preventDefault();
+  var songName = $('#songName').val();
+  var trackNumber = $('#trackNumber').val();
+  var albumId = $('#songModal').data('album-id');
+  console.log(albumId);
+  console.log(songName + trackNumber);
+  $.ajax({
+    method: 'POST',
+    url: '/api/albums/' + albumId + '/songs',
+    data: {
+      name: songName,
+      trackNumber: trackNumber
+    },
+    success: postSongSuccess,
+    error: postSongError
+  });
+}
+
+function postSongSuccess(json) {
+  console.log("Here's what we got back: ", json);
+}
+
+function postSongError(err) {
+  console.log("The song could not be created: ", err);
 }
