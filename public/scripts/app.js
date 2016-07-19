@@ -98,8 +98,24 @@ function handleNewSongSubmit(e) {
 
 function postSongSuccess(json) {
   console.log("Here's what we got back: ", json);
+  $.ajax({
+    method: 'GET',
+    url: '/api/albums/' + $('#songModal').data('album-id'),
+    success: getAlbumSuccess,
+    error: getAlbumError
+  });
 }
 
 function postSongError(err) {
   console.log("The song could not be created: ", err);
+}
+
+function getAlbumSuccess(json) {
+  console.log("Got this song back: ", json);
+  $('[data-album-id='+json._id+']').remove();
+  renderAlbum(json);
+}
+
+function getAlbumError(err) {
+  console.log("The album could not be found: ", err);
 }
