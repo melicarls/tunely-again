@@ -84,6 +84,7 @@ function handleNewSongSubmit(e) {
   var albumId = $('#songModal').data('album-id');
   console.log(albumId);
   console.log("Adding " + songName + " to " + trackNumber);
+  $('#songModal').modal('');
   $.ajax({
     method: 'POST',
     url: '/api/albums/' + albumId + '/songs',
