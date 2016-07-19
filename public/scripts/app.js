@@ -39,7 +39,6 @@ $(document).ready(function() {
     });
   });
 
-
 });
 
 
@@ -72,6 +71,7 @@ function handleNewSongClick(event) {
   var currentAlbumId= $(this).closest('.album').data('album-id');
   console.log('id',currentAlbumId);
   $('#songModal').data('album-id', currentAlbumId);
+  console.log($('#songModal').data('album-id'));
   $('#songModal').modal();
   $('#saveSong').on('click', handleNewSongSubmit);
 }
@@ -83,7 +83,7 @@ function handleNewSongSubmit(e) {
   var trackNumber = $('#trackNumber').val();
   var albumId = $('#songModal').data('album-id');
   console.log(albumId);
-  console.log(songName + trackNumber);
+  console.log("Adding " + songName + " to " + trackNumber);
   $.ajax({
     method: 'POST',
     url: '/api/albums/' + albumId + '/songs',
